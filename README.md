@@ -5,15 +5,11 @@
 
 <p align="center">
   <a href="https://design.tool2team.org/tail-my-box">
-    <img alt="Tail my box" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+    <img alt="Tail my box" src="https://raw.githubusercontent.com/sinsedrix/tail-my-box/master/src/images/logo-b.png" width="60" />
   </a>
 </p>
 <h1 align="center">
   Tail my box
 </h1>
-<p>A deckbox designer</p>
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/sinsedrix/tail-my-box)
+<p>My deckbox designer</p>
 
