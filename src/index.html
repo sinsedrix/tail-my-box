@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/png" href="img/deckbox.png" />
+<title>Deckbox Designer</title>
+<style>
+body { background-color: rgb(175, 207, 175); }
+#svgview { width: 600px; height: 300px; background-color: #FFFFFF; border: 1px solid #080808; }
+
+th { text-align: left; }
+</style>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.svg.js"></script>
+<script type="text/javascript" src="js/jquery.deckbox.js"></script>
+
+<script type="text/javascript">
+$(function() {
+	$('#svgview').svg({onLoad: loadSVG});
+	
+	$('#update').click(generateSVG);
+
+	$('#download').click(function() {
+		var xml = $('#svgview').svg('get').toSVG();
+		var type = 'image/svg+xml';
+		var uri = 'data:'+ type +';utf8,'+ encodeURIComponent(xml);
+		var l = parseFloat($('#l').val(), 10);
+		var h = parseFloat($('#h').val(), 10);
+		var p = parseFloat($('#p').val(), 10);
+		var bt = parseFloat($('#bt').val(), 10);
+		var lt = parseFloat($('#lt').val(), 10);
+		var name = 'deckbox_'+ l +'x'+ h +'x'+ p +'_'+ bt +'.svg';
+		
+		var link = document.getElementById("downloadlink");
+		link.download = name;
+		link.type = type;
+		link.href = uri;
+		link.click();
+	});
+	
+	$('#bt').change(function() {
+		$('#q').val(parseFloat($('#bt').val(), 10)*2.5);
+	});
+	
+	loadPresets();
+	$('#box_80').click();
+});
+
+function loadStyles(svg) {
+	var styles = ''
+	+'.face   { stroke: #FF0000; stroke-width: 0.1mm; fill: none; } '
+	+'.inside { stroke: #FF0000; stroke-width: 0.1mm; fill: none; } '
+	+'.draw   { stroke: #808080; stroke-width: 0.1mm; fill: none; } '
+	+'.debug  { stroke: #00FF00; stroke-width: 0.1mm; fill: none; } '
+	+'.copy   { font-family: "Courier New"; font-size: 2mm; fill: #000000; } ';
+	
+	svg.style(styles);
+}
+
+function loadPresets() {
+	var presets = {
+		box_60  : { title:"Box 60 cards",  values: {l:70, h:98, p:45, bt:3, lt:0.0025, q:7.5, nbi:0} },
+		box_80  : { title:"Box 80 cards",  values: {l:70, h:98, p:60, bt:3, lt:0.0025, q:7.5, nbi:0} },
+		box_100 : { title:"Box 100 cards", values: {l:70, h:98, p:85, bt:3, lt:0.0025, q:7.5, nbi:0} },
+		box_sq  : { title:"Box square",    values: {l:70, h:98, p:70, bt:3, lt:0.0025, q:7.5, nbi:0} }
+	};
+	
+	var $presets = $('#presets');
+	for(var p in presets) {
+		var $input = $('<input type="radio" name="presets" id="'+ p +'" value="'+ p +'" />');
+		var $label = $('<label for="'+ p +'">'+ presets[p].title +'</label>');
+		
+		$presets
+			.append($input)
+			.append($label)
+			.append('<br/>');
+
+		$input
+			.click(function() {
+				for(k in presets[this.value].values)
+					$('#'+k).val(presets[this.value].values[k]);
+			});
+	}
+}
+
+function loadSVG() {
+	var svg = $('#svgview').svg('get')
+	svg.clear();
+	loadStyles(svg);
+	svg.rect(0,0, 600, 300, {class:'draw'});
+}
+
+function generateSVG() {
+	var l = parseFloat($('#l').val(), 10);
+	var h = parseFloat($('#h').val(), 10);
+	var p = parseFloat($('#p').val(), 10);
+	var bt = parseFloat($('#bt').val(), 10);
+	var lt = parseFloat($('#lt').val(), 10);
+	var q = parseFloat($('#q').val(), 10);
+	var nbi = parseInt($('#nbi').val(), 10);
+
+	loadSVG();
+	$('#svgview').deckbox(l, h, p, bt, q, lt, nbi);
+}
+</script>
+</head>
+
+<body>
+	<h1>Deckbox Designer</h1>
+	<p>Designing a deckbox with jQuery SVG by @sinsedrix</p>
+	<div id="svgview"></div>
+	
+	<div>
+		<fieldset>
+			<legend>Presets:</legend>
+			<div id="presets"></div>
+		</fieldset>
+		<br/>
+		<fieldset>
+			<legend>Settings:</legend>
+			<table>
+				<tr><th><label for="l">  W (width)           </label></th><td><input type="number" min="10" max="500" step="1" id="l" /></td></tr>
+				<tr><th><label for="h">  H (height)          </label></th><td><input type="number" min="10" max="500" step="1" id="h" /></td></tr>
+				<tr><th><label for="p">  D (depth)           </label></th><td><input type="number" min="10" max="500" step="1" id="p" /></td></tr>
+				<tr><th><label for="bt"> BT (board thickness)</label></th><td><input type="number" min="1" max="10" step="0.1" id="bt" /></td></tr>
+				<tr><th><label for="lt"> LT (laser thickness)</label></th><td><input type="number" min="0.0005" max="0.010" step="0.0005" id="lt" /></td></tr>
+				<tr><th><label for="q">  N (notch)           </label></th><td><input type="number" min="2" max="25" step="0.1" id="q" /></td></tr>
+				<tr><th><label for="nbi">I (dividers)        </label></th><td><input type="number" min="0" max="10" step="1" id="nbi" /></td></tr>
+			</table>
+		</fieldset>
+		
+		<button id="update">Update</button>
+		<button id="download">Download</button>
+		
+		<p>Thanks to:</p>
+		<ul>
+			<li>Keith Wood <a href="http://keith-wood.name/svg.html">http://keith-wood.name/svg.html</a></li>
+			<li>Rahul <a href="http://boxdesigner.connectionlab.org/">http://boxdesigner.connectionlab.org/</a></li>
+		</ul>
+	</div>
+	<a id="downloadlink" style="display:none;">Download link</a>
+</body>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-93501936-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</html>

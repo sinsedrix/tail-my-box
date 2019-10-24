@@ -1,0 +1,28 @@
+#svgview {
+    position: relative;
+    display: inline-block;
+    width: 600px; 
+    height: 300px;
+    background-color: #FFFFFF; 
+    border: 1px solid #080808; 
+
+    .overlay {
+
+        position: absolute;
+        background: rgba(100,100,100,0.5);
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+
+        .downloadLnk {
+            display: none;
+        }
+
+        .downloadBtn {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+        }
+    }
+}

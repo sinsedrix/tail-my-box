@@ -1,0 +1,21 @@
+.presets {
+    display: inline-block;
+    margin: .5rem;
+    padding: 0 1rem .5rem;
+    width: 300px;
+    border: 4px dotted white;
+
+    legend  {
+        padding: 8px;
+    }
+
+    label {
+        display: inline;
+    }
+
+    div {
+
+        input {
+        }
+    }
+}
