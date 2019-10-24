@@ -1,7 +1,7 @@
 import React, { createRef } from "react"
 import Face from "./boxparts/face"
-import Separator from "./boxparts/separator";
-import Inside from "./boxparts/inside";
+import Separator from "./boxparts/separator"
+import Inside from "./boxparts/inside"
 import siteConfig from '../../data/siteConfig'
 
 const cutStyle = {
@@ -11,9 +11,9 @@ const cutStyle = {
 };
 
 const engraveStyle = {
-    stroke: '#000000',
+    stroke: 'none',
     strokeWidth: '0.1mm',
-    fill: 'none'
+    fill: '#000000'
 };
 
 const Viewer = ({ values }) => {
@@ -182,8 +182,8 @@ const Viewer = ({ values }) => {
                 {insides.map(ins =>
                     <Inside key={ins.id} {...ins} style={cutStyle} />
                 )}
-                <text x={10} y={280} font-family="Verdana" font-size="10">{siteConfig.title + ' by ' + siteConfig.author}</text>
-                <text x={10} y={290} font-family="Verdana" font-size="10">{getFilename(values)}</text>
+                <text x={10} y={280} fontFamily="Verdana" fontSize="10" style={engraveStyle}>{siteConfig.title + ' by ' + siteConfig.author}</text>
+                <text x={10} y={290} fontFamily="Verdana" fontSize="10" style={engraveStyle}>{getFilename(values)}</text>
             </svg>
 
             <div className="overlay">
