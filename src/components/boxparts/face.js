@@ -11,49 +11,39 @@ import React from "react"
 // flExtX : flag exterieur abscisse
 // flExtY : flag exterieur ordonnée
 const Face = ({ id, oX, oY, w, h, dw, dh, nw, nh, bt, lt, dcut, flExtX, flExtY, style }) => {
-    let x, y, dx, dy, i, j;
-    let extex = flExtY ? 0 : bt, extey = flExtX ? 0 : bt;
-    let dew = flExtY ? w : w - bt, deh = flExtX ? h : h - bt;
+    let dwin = dw - 2 * lt, dwou = dw + 2 * lt;
+    let dhin = dh - 2 * lt, dhou = dh + 2 * lt;
+    let btin = bt - 2 * lt;
     let lines = [];
+    let fdw = (flExt, idx) => { return flExt === (idx % 2 ? true : false) ? dwou : dwin; };
+    let fdh = (flExt, idx) => { return flExt === (idx % 2 ? true : false) ? dhou : dhin; };
+    let fbt = (flExt, idx) => { return btin * (flExt === (idx % 2 ? true : false)); };
 
-    x = y = 0;
-    console.log("id, oX, oY, w, h, dw, dh, nw, nh, bt, lt, dcut, flExtX, flExtY, extex, extey :", id, oX, oY, w, h, dw, dh, nw, nh, bt, lt, dcut, flExtX, flExtY, extex, extey);
-    lines.push({ x1: x + extex, y1: y + extey, x2: x + dw, y2: y + extey }); //-
+    for (let i = 0, x = 0; i <= 2 * nw; i++) {
+        let dwi = fdw(flExtX, i);
+        let bti = fbt(flExtX, i);
 
-    lines.push({ x1: x + extex, y1: y + deh, x2: x + dw, y2: y + deh }); //-
-    lines.push({ x1: x + dw, y1: y, x2: x + dw, y2: y + bt }); //|
-    lines.push({ x1: x + dw, y1: y + h, x2: x + dw, y2: y + h - bt }); //|
-    x += dw;
-    for (i = 1; i < 2 * nw; i++ , x += dw) {
-        dy = flExtX ? bt * (i % 2) : bt * ((i + 1) % 2);
-        lines.push({ x1: x, y1: y + dy, x2: x + dw, y2: y + dy }); //_
-        lines.push({ x1: x + dw, y1: y, x2: x + dw, y2: y + bt }); //|
+        lines.push({ x1: x, y1: bti, x2: x + dwi, y2: bti }); //-
+        if (i < 2 * nw) lines.push({ x1: x + dwi, y1: 0, x2: x + dwi, y2: btin }); //|
 
-        lines.push({ x1: x, y1: y + h - dy, x2: x + dw, y2: y + h - dy }); //_
-        lines.push({ x1: x + dw, y1: y + h, x2: x + dw, y2: y + h - bt }); //|
+        lines.push({ x1: x, y1: h - bti, x2: x + dwi, y2: h - bti }); //-
+        if (i < 2 * nw) lines.push({ x1: x + dwi, y1: h, x2: x + dwi, y2: h - btin }); //|
+        x += dwi;
     }
-    lines.push({ x1: x, y1: y + extey, x2: x + dw - extex, y2: y + extey }); // -
-    lines.push({ x1: x, y1: y + h - extey, x2: x + dw - extex, y2: y + h - extey }); // -
 
-    x = y = 0;
-    lines.push({ x1: x + extex, y1: y + extey, x2: x + extex, y2: y + dh }); //|
-    lines.push({ x1: x + dew, y1: y + extey, x2: x + dew, y2: y + dh }); //|
-    lines.push({ x1: x, y1: y + dh, x2: x + bt, y2: y + dh }); //-
-    lines.push({ x1: x + w, y1: y + dh, x2: x + w - bt, y2: y + dh }); //-
-    y += dh;
-    for (j = 1; j < 2 * nh; j++ , y += dh) {
-        dx = flExtY ? bt * (j % 2) : bt * ((j + 1) % 2);
-        lines.push({ x1: x + dx, y1: y, x2: x + dx, y2: y + dh });
-        lines.push({ x1: x, y1: y + dh, x2: x + bt, y2: y + dh });
+    for (let j = 0, y = 0; j <= 2 * nh; j++) {
+        let dhj = fdh(flExtY, j);
+        let btj = fbt(flExtY, j);
 
-        lines.push({ x1: x + w - dx, y1: y, x2: x + w - dx, y2: y + dh });
-        lines.push({ x1: x + w, y1: y + dh, x2: x + w - bt, y2: y + dh });
+        lines.push({ x1: btj, y1: y, x2: btj, y2: y + dhj }); //-
+        if (j < 2 * nh) lines.push({ x1: 0, y1: y + dhj, x2: btin, y2: y + dhj }); //|
 
+        lines.push({ x1: w - btj, y1: y, x2: w - btj, y2: y + dhj }); //-
+        if (j < 2 * nh) lines.push({ x1: w, y1: y + dhj, x2: w - btin, y2: y + dhj }); //|
+        y += dhj;
     }
-    lines.push({ x1: x + extex, y1: y, x2: x + extex, y2: y + dh - extey }); // |
-    lines.push({ x1: x + dew, y1: y, x2: x + dew, y2: y + dh - extey }); // |
 
-    if (dcut) lines.push({ x1: bt, y1: dcut, x2: w - bt, y2: dcut });
+    if (dcut) lines.push({ x1: btin, y1: dcut, x2: w - btin, y2: dcut });
 
     return (
         <g id={id} className="face" style={style}

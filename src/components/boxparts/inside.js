@@ -13,13 +13,16 @@ import React from "react"
 const Inside = ({ id, oX, oY, w, h, bt, lt, ni, style }) => {
 
     let line = { x1: 0, y1: 0, x2: w, y2: 0 };
+    let wou = w + 2 * lt;
+    let hou = h + 2 * lt;
+    let btin = bt - 2 * lt;
 
-    var dp = (w - bt) / (ni + 1) - bt;
-    var path = 'm ' + 0 + ',' + 0 + ' l ' + 0 + ',' + (2 * h / 3) + ' ';
-    for (var i = 0; i < ni + 1; i++) {
-        path += bt + ',' + 0 + ' ' + 0 + ',' + + (h / 3) + ' ' + dp + ',' + 0 + ' ' + 0 + ',' + (-h / 3) + ' ';
+    let dp = (wou - btin) / (ni + 1) - btin;
+    let path = 'm ' + 0 + ',' + 0 + ' l ' + 0 + ',' + (2 * hou / 3) + ' ';
+    for (let i = 0; i < ni + 1; i++) {
+        path += btin + ',' + 0 + ' ' + 0 + ',' + + (hou / 3) + ' ' + dp + ',' + 0 + ' ' + 0 + ',' + (-hou / 3) + ' ';
     }
-    path += bt + ',' + 0 + ' ' + 0 + ',' + (-2 * h / 3);
+    path += btin + ',' + 0 + ' ' + 0 + ',' + (-2 * hou / 3);
 
     return (
         <g id={id} className="inside" style={style}

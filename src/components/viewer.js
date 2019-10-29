@@ -112,7 +112,7 @@ const Viewer = ({ values }) => {
         seps.push({
             id: 'sepA' + i,
             oX: x, oY: 2 * bt,
-            w: w + 2 * bt - lt,
+            w: w + 2 * bt,
             h: h - dh + bt,
             bt: bt,
             lt: lt,
@@ -122,7 +122,7 @@ const Viewer = ({ values }) => {
         seps.push({
             id: 'sepB' + i,
             oX: x, oY: 3 * bt + hext,
-            w: w + 2 * bt - lt,
+            w: w + 2 * bt,
             h: h - dh + bt,
             bt: bt,
             lt: lt,
@@ -136,7 +136,7 @@ const Viewer = ({ values }) => {
     insides.push({
         id: 'insA',
         oX: x, oY: 2 * bt,
-        w: d + 2 * bt - lt, h: h - dh + bt,
+        w: d + 2 * bt, h: h - dh + bt,
         bt: bt, lt: lt,
         ni: ni
     });
@@ -144,7 +144,7 @@ const Viewer = ({ values }) => {
     insides.push({
         id: 'insB',
         oX: x, oY: 3 * bt + hext,
-        w: d + 2 * bt - lt, h: h - dh + bt,
+        w: d + 2 * bt, h: h - dh + bt,
         bt: bt, lt: lt,
         ni: ni
     });
