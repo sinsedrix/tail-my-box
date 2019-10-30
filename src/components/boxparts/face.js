@@ -15,8 +15,8 @@ const Face = ({ id, oX, oY, w, h, dw, dh, nw, nh, bt, lt, dcut, flExtX, flExtY, 
     let dhin = dh - 2 * lt, dhou = dh + 2 * lt;
     let btin = bt - 2 * lt;
     let lines = [];
-    let fdw = (flExt, idx) => { return flExt === (idx % 2 ? true : false) ? dwou : dwin; };
-    let fdh = (flExt, idx) => { return flExt === (idx % 2 ? true : false) ? dhou : dhin; };
+    let fdw = (flExt, idx) => { return flExt === (idx % 2 ? true : false) ? dwin : dwou; };
+    let fdh = (flExt, idx) => { return flExt === (idx % 2 ? true : false) ? dhin : dhou; };
     let fbt = (flExt, idx) => { return btin * (flExt === (idx % 2 ? true : false)); };
 
     for (let i = 0, x = 0; i <= 2 * nw; i++) {
