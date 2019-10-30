@@ -12,4 +12,10 @@
   Tail my box
 </h1>
 <p>My deckbox designer</p>
+<p>Many boxes at <a href="https://www.facebook.com/tool2team">Tool2Team on facebook</a></p>
 
+## 📷 Preview
+
+![Preview](./preview.png)
+
+![Box](./box.png)
