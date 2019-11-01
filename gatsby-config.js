@@ -4,6 +4,7 @@ module.exports = {
   siteMetadata: {
     ...config
   },
+  pathPrefix: '/tail-my-box',
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
