@@ -2,7 +2,6 @@
     display: inline-block;
     margin: .5rem;
     padding: 0 1rem .5rem;
-    width: 300px;
     border: 4px dotted white;
 
     legend  {
@@ -18,7 +17,7 @@
         
         input {
             float: right;
-            min-width: 100px;
+            width: 100px;
             text-align: right;
             font-family: 'Courier New', Courier, monospace;
             color: black;
