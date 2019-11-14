@@ -20,7 +20,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `tail-my-box`,
-        short_name: `tmb`,
+        short_name: `Tail My Box`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
