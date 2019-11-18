@@ -13,7 +13,7 @@ import React from "react"
 const Face = ({ id, oX, oY, w, h, dw, dh, nw, nh, bt, lt, dcut, flExtX, flExtY, style }) => {
     let dwin = dw - 2 * lt, dwou = dw + 2 * lt;
     let dhin = dh - 2 * lt, dhou = dh + 2 * lt;
-    let btin = bt - 2 * lt, btex = bt + 2 * lt;
+    let btin = bt - 2 * lt, btex = bt + lt;
     let linesB = [], linesT = [], linesL = [], linesR = [];
     let fdw = (flExt, idx) => { return flExt === (idx % 2 ? true : false) ? dwin : dwou; };
     let fdh = (flExt, idx) => { return flExt === (idx % 2 ? true : false) ? dhin : dhou; };
