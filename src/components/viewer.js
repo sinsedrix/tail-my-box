@@ -95,7 +95,7 @@ const Viewer = ({ values }) => {
 
     faces.push({
         id: "bottom",
-        oX: x, oY: (3 * bt + hext),
+        oX: x, oY: (3 * bt + wext),
         dw: dd, dh: dw,
         nw: ncd, nh: ncw,
         w: dext, h: wext,

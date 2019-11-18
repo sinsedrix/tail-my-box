@@ -13,21 +13,21 @@ import React from "react"
 const Face = ({ id, oX, oY, w, h, dw, dh, nw, nh, bt, lt, dcut, flExtX, flExtY, style }) => {
     let dwin = dw - 2 * lt, dwou = dw + 2 * lt;
     let dhin = dh - 2 * lt, dhou = dh + 2 * lt;
-    let btin = bt - 2 * lt;
+    let btin = bt - 2 * lt, btex = bt + 2 * lt;
     let linesB = [], linesT = [], linesL = [], linesR = [];
     let fdw = (flExt, idx) => { return flExt === (idx % 2 ? true : false) ? dwin : dwou; };
     let fdh = (flExt, idx) => { return flExt === (idx % 2 ? true : false) ? dhin : dhou; };
-    let fbt = (flExt, idx) => { return btin * (flExt === (idx % 2 ? true : false)); };
+    let fbt = (flExt, idx) => { return btex * (flExt === (idx % 2 ? true : false)); };
 
     for (let i = 0, x = 0; i <= 2 * nw; i++) {
         let dwi = fdw(flExtX, i);
         let bti = fbt(flExtX, i);
 
         linesB.push({ x1: x, y1: bti, x2: x + dwi, y2: bti }); //-
-        if (i < 2 * nw) linesB.push({ x1: x + dwi, y1: 0, x2: x + dwi, y2: btin }); //|
+        if (i < 2 * nw) linesB.push({ x1: x + dwi, y1: 0, x2: x + dwi, y2: btex }); //|
 
         linesT.push({ x1: x, y1: h - bti, x2: x + dwi, y2: h - bti }); //-
-        if (i < 2 * nw) linesT.push({ x1: x + dwi, y1: h, x2: x + dwi, y2: h - btin }); //|
+        if (i < 2 * nw) linesT.push({ x1: x + dwi, y1: h, x2: x + dwi, y2: h - btex }); //|
         x += dwi;
     }
 
@@ -36,10 +36,10 @@ const Face = ({ id, oX, oY, w, h, dw, dh, nw, nh, bt, lt, dcut, flExtX, flExtY, 
         let btj = fbt(flExtY, j);
 
         linesL.push({ x1: btj, y1: y, x2: btj, y2: y + dhj }); //-
-        if (j < 2 * nh) linesL.push({ x1: 0, y1: y + dhj, x2: btin, y2: y + dhj }); //|
+        if (j < 2 * nh) linesL.push({ x1: 0, y1: y + dhj, x2: btex, y2: y + dhj }); //|
 
         linesR.push({ x1: w - btj, y1: y, x2: w - btj, y2: y + dhj }); //-
-        if (j < 2 * nh) linesR.push({ x1: w, y1: y + dhj, x2: w - btin, y2: y + dhj }); //|
+        if (j < 2 * nh) linesR.push({ x1: w, y1: y + dhj, x2: w - btex, y2: y + dhj }); //|
         y += dhj;
     }
 
