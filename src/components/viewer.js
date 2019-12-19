@@ -171,7 +171,7 @@ const Viewer = ({ values }) => {
             <svg ref={svgRef}
                 xmlns="http://www.w3.org/2000/svg"
                 version="1.1"
-                width="600" height="300"
+                width="600mm" height="300mm"
                 viewBox="0 0 600 300">
                 {faces.map(face =>
                     <Face key={face.id} {...face} style={cutStyle} />
