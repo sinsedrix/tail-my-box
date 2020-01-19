@@ -10,19 +10,19 @@ import React from "react"
 // dcut : découpe coffre
 // flExtX : flag exterieur abscisse
 // flExtY : flag exterieur ordonnée
+// prettier-ignore
 const Inside = ({ id, oX, oY, w, h, bt, lt, ni, style }) => {
 
     let line = { x1: 0, y1: 0, x2: w, y2: 0 };
-    let wou = w + 2 * lt;
-    let hou = h + 2 * lt;
-    let btin = bt - 2 * lt;
+    let wou = w - 2 * lt;
+    let hou = h - 2 * lt;
 
-    let dp = (wou - btin) / (ni + 1) - btin;
+    let dp = (wou - bt) / (ni + 1) - bt;
     let path = 'm ' + 0 + ',' + 0 + ' l ' + 0 + ',' + (2 * hou / 3) + ' ';
     for (let i = 0; i < ni + 1; i++) {
-        path += btin + ',' + 0 + ' ' + 0 + ',' + + (hou / 3) + ' ' + dp + ',' + 0 + ' ' + 0 + ',' + (-hou / 3) + ' ';
+        path += bt + ',' + 0 + ' ' + 0 + ',' + + (hou / 3) + ' ' + dp + ',' + 0 + ' ' + 0 + ',' + (-hou / 3) + ' ';
     }
-    path += btin + ',' + 0 + ' ' + 0 + ',' + (-2 * hou / 3);
+    path += bt + ',' + 0 + ' ' + 0 + ',' + (-2 * hou / 3);
 
     return (
         <g id={id} className="inside" style={style}
