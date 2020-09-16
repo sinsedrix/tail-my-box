@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sinsedrix/tail-my-box.svg?branch=master)](https://travis-ci.org/sinsedrix/tail-my-box)
+[![Build Status](https://travis-ci.com/sinsedrix/tail-my-box.svg?branch=master)](https://travis-ci.com/sinsedrix/tail-my-box)
 [![GitHub version](https://badge.fury.io/gh/sinsedrix%2Ftail-my-box.svg)](https://badge.fury.io/gh/sinsedrix%2Ftail-my-box)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
