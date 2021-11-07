@@ -25,7 +25,7 @@ const Boxer = ({ presets, settings }) => {
       <Presets selectId={select} params={presets} onChange={handlePresetChange} />
       <Settings params={settings} values={values} onChange={handleSettingChange} />
     </div>
-  );
+  )
 
 }
 
