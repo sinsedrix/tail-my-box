@@ -3,30 +3,38 @@
   "private": true,
   "description": "Desing straight dovetailed boxes",
   "version": "0.1.0",
-  "author": "sinsedrix <sinsedrix@gmail.com>",
+  "author": "sinsedrix",
   "dependencies": {
-    "gatsby": "^2.26.1",
-    "gatsby-image": "^2.2.23",
-    "gatsby-plugin-manifest": "^2.2.20",
-    "gatsby-plugin-offline": "^3.0.11",
-    "gatsby-plugin-react-helmet": "^3.1.10",
-    "gatsby-plugin-sass": "^2.1.18",
-    "gatsby-plugin-sharp": "^2.8.0",
-    "gatsby-plugin-typography": "^2.3.11",
-    "gatsby-source-filesystem": "^2.1.28",
-    "gatsby-transformer-sharp": "^2.2.19",
-    "node-sass": "^4.14.1",
+    "gatsby": "^4.1.3",
+    "gatsby-plugin-feed": "^4.1.1",
+    "gatsby-plugin-gatsby-cloud": "^4.1.1",
+    "gatsby-plugin-google-analytics": "^4.1.0",
+    "gatsby-plugin-image": "^2.1.1",
+    "gatsby-plugin-manifest": "^4.1.2",
+    "gatsby-plugin-offline": "^5.1.2",
+    "gatsby-plugin-react-helmet": "^5.1.0",
+    "gatsby-plugin-sass": "^5.1.1",
+    "gatsby-plugin-sharp": "^4.1.2",
+    "gatsby-remark-copy-linked-files": "^5.1.0",
+    "gatsby-remark-images": "^6.1.2",
+    "gatsby-remark-prismjs": "^6.1.0",
+    "gatsby-remark-responsive-iframe": "^5.1.0",
+    "gatsby-remark-smartypants": "^5.1.0",
+    "gatsby-source-filesystem": "^4.1.1",
+    "gatsby-transformer-remark": "^5.1.2",
+    "gatsby-transformer-sharp": "^4.1.0",
+    "node-sass": "^6.0.1",
+    "prismjs": "^1.25.0",
     "prop-types": "^15.7.2",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
-    "react-helmet": "^5.2.1",
-    "react-typography": "^0.16.19",
-    "sass-loader": "^8.0.0",
-    "typography": "^0.16.19"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0"
   },
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^1.18.2"
+    "prettier": "^2.4.1",
+    "resolve-url-loader": "^4.0.0"
   },
   "keywords": [
     "gatsby"
@@ -35,10 +43,16 @@
   "scripts": {
     "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "use": [
+      "style-loader",
+      "css-loader",
+      "sass-loader"
+    ]
   },
   "repository": {
     "type": "git",
