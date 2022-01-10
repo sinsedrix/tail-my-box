@@ -2,9 +2,8 @@
 [![GitHub version](https://badge.fury.io/gh/sinsedrix%2Ftail-my-box.svg)](https://badge.fury.io/gh/sinsedrix%2Ftail-my-box)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-
 <p align="center">
-  <a href="https://design.tool2team.org/tail-my-box">
+  <a href="https://tail-my-box.surge.sh">
     <img alt="Tail my box" src="https://raw.githubusercontent.com/sinsedrix/tail-my-box/master/src/images/logo-b.png" width="60" />
   </a>
 </p>
