@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import logo from "../images/logo-w.png"
@@ -11,10 +10,7 @@ const Header = ({ siteTitle, rootUrl }) => (
     <div className="content">
       <div className="inner">
         <h1>
-          <Link
-            to="/">
-            {siteTitle}
-          </Link>
+          <a href="/">{siteTitle}</a>
         </h1>
       </div>
     </div>

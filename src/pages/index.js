@@ -1,14 +1,12 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 import Boxer from "../components/boxer"
 import siteConfig from '../../data/siteConfig'
 import Header from "../components/header"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
     <div className="body">
       <div id="wrapper">
         <Header siteTitle={siteConfig.title} rootUrl={siteConfig.rootUrl} />

@@ -1,7 +1,7 @@
-const presets = require("./presets");
-const settings = require("./settings");
+import presets from './presets';
+import settings from './settings';
 
-module.exports = {
+export default {
     title: 'Tail my box',
     description: `Design straight dovetailed boxes`,
     keyWords: ['gatsbyjs', 'react', 'design'],

@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.com/sinsedrix/tail-my-box.svg?branch=master)](https://travis-ci.com/sinsedrix/tail-my-box)
+[![Deploy](https://github.com/sinsedrix/tail-my-box/actions/workflows/deploy.yml/badge.svg)](https://github.com/sinsedrix/tail-my-box/actions/workflows/deploy.yml)
 [![GitHub version](https://badge.fury.io/gh/sinsedrix%2Ftail-my-box.svg)](https://badge.fury.io/gh/sinsedrix%2Ftail-my-box)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 <p align="center">
-  <a href="https://tail-my-box.surge.sh">
+  <a href="https://sinsedrix.github.io/tail-my-box/">
     <img alt="Tail my box" src="https://raw.githubusercontent.com/sinsedrix/tail-my-box/master/src/images/logo-b.png" width="60" />
   </a>
 </p>

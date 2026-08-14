@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     { id: "w", name: "width", type: "number", min: "10", max: "500", step: "1" },
     { id: "h", name: "height", type: "number", min: "10", max: "500", step: "1" },
     { id: "d", name: "depth", type: "number", min: "10", max: "500", step: "1" },

@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     { id: "default", name: "Default", values: { w: 70, h: 100, d: 60, bt: 3, lt: 0.05, dc: 7.5, ni: 0 } },
     { id: "box_60", name: "Box 60 cards", values: { w: 70, h: 98, d: 45, bt: 3, lt: 0.05, dc: 7.5, ni: 0 } },
     { id: "box_80", name: "Box 80 cards", values: { w: 70, h: 98, d: 60, bt: 3, lt: 0.05, dc: 7.5, ni: 0 } },
