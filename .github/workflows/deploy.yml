@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-pages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,16 +25,29 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          VITE_BASE: /tail-my-box/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+
+  build-surge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
       - uses: actions/upload-artifact@v4
         with:
-          name: dist
+          name: dist-surge
           path: dist
 
   deploy-pages:
-    needs: build
+    needs: build-pages
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -44,11 +57,11 @@ jobs:
         uses: actions/deploy-pages@v4
 
   deploy-surge:
-    needs: build
+    needs: build-surge
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: dist
+          name: dist-surge
           path: dist
       - run: npx surge dist tail-my-box.surge.sh --token ${{ secrets.SURGE_TOKEN }}
