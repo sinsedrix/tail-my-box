@@ -1,6 +1,7 @@
 {
   "name": "tail-my-box",
   "private": true,
+  "type": "module",
   "description": "Desing straight dovetailed boxes",
   "version": "0.1.0",
   "author": "sinsedrix",

@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import logo from "../images/logo-w.png"
 
-const Header = ({ siteTitle, rootUrl }) => (
+const Header = ({ siteTitle = '', rootUrl }) => (
   <header id="header">
     <a href={rootUrl} className="logo">
       <img src={logo} alt="logo" className="icon" />
@@ -19,10 +19,6 @@ const Header = ({ siteTitle, rootUrl }) => (
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
 }
 
 export default Header

@@ -9,7 +9,7 @@
 
 /// Breakpoints.
 /// @var {list}
-//$breakpoints: () !global;
+$breakpoints: null;
 
 /// Vendor prefixes.
 /// @var {list}
@@ -86,7 +86,7 @@ $vendor-values: (
     @warn "List index is #{$index} but list is only #{list.length($list)} item long for `remove-nth`.";
   } @else {
     $result: ();
-    $index: if($index < 0, list.length($list) + $index + 1, $index);
+    $index: if(sass($index < 0): list.length($list) + $index + 1; else: $index);
 
     @for $i from 1 through list.length($list) {
       @if $i != $index {
