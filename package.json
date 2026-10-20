@@ -15,7 +15,7 @@
     "prettier": "^2.4.1",
     "sass": "^1.69.0",
     "surge": "^0.43.0",
-    "vite": "^8.2.1"
+    "vite": "^8.3.4"
   },
   "keywords": [],
   "license": "MIT",
